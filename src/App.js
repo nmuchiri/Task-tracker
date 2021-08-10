@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Header from './components/header'
-import Tasks from './components/tasks'
-import AddTask from './components/addTask'
+import Header from './components/Header'
+import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 
 const App = () => {
   const [showAddTask, setShowAddTask] = useState(true)
@@ -42,11 +42,12 @@ const App = () => {
 
   return (
     <div className='container'>
-      <Header />
+      <Header onAdd={()=> setShowAddTask(!showAddTask)} />
       {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? <Tasks
         tasks={tasks}
-        onDelete={deleteTask} onToggle={toggleReminder} /> : "You're all caught up!"}
+        onDelete={deleteTask} 
+        onToggle={toggleReminder} /> : "You're all caught up!"}
     </div>
   )
 }
